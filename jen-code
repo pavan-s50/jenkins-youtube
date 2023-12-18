@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+     environment      {
+         name = 'pavan'
+                      }
+     parameters {
+         string(name: 'Person', defaultValue: 'pavan shinde',description: "who are you?")
+                 }
+    
+        stage('Evironmet -variale'){
+            steps{
+               sh ' echo "$(BUILD_ID)"'
+                
+                                     }
+                                    }
+               stage('Build'){
+            steps                           {
+                echo 'Building the environment'
+                                              }
+                                               }
+                  stage('Parameter'){
+            steps {
+                sh  'echo $" person"'
+                echo 'Deploying to test'
+            }
+                  }
+                       stage('Deploy-on-production'){
+            steps {
+                echo 'Deploying to production'
+                 }
+             }
+                      stage('Continou..?') {
+                          input{
+                              message " should we continue...?"
+                              ok "yes we should"
+                               }
+                          }
+            steps {
+                sh  'echo $" person"'
+                echo 'Deploying to test'
+                   }
+   }
+
